@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velkommen - Hjerte Klinik</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="page2">
+    <div class="welcome-container">
+        <h2>Personale Adgang</h2>
+
+        <!-- Viser patientliste -->
+        <h3>List of Patients</h3>
+        {% if patients %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Navn</th>
+                        <th>Alder</th>
+                        <th>Fødselsdato</th>
+                        <th>Sygesikrings ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for patient in patients %}
+                        <tr>
+                            <td>{{ patient.username }}</td>
+                            <td>{{ patient.age }}</td>
+                            <td>{{ patient.date_of_birth }}</td>
+                            <td>{{ patient.sygesikring_id }}</td>
+                            <td>
+                                <!-- This link will trigger the graph view for the selected patient -->
+                                <a href="{{ url_for('view_patient_graph', username=patient.username) }}">Vis Graf</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No patients found.</p>
+        {% endif %}
+
+        <!-- Display the patient graph if available -->
+        {% if graph_path %}
+            <h3>Patient Graph</h3>
+            <img src="{{ url_for('static', filename='gemt_graf/' + graph_path) }}" alt="Patient Graph">
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velkommen - Hjerte Klinik</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="page2">
+
+<div class="welcome-container">
+
+<form method="post">
+  <input type="text" name="username" placeholder="Brugernavn" required>
+  <input type="password" name="password" placeholder="Adgansgkode" required>
+  <input type="text" name="sygesikring_id" placeholder="Sygesikringsnr_id" required>
+  <input type="text" name="date_of_birth" placeholder="Fødselsdato" required>
+    <input type="text" name="age" placeholder="Alder" required>
+  <button type="submit">Register</button>
+</form>
+
+</div>

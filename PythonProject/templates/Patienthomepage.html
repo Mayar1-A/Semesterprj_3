@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velkommen til hjerteklinkken!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="page2">
+
+ {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+
+
+    <!-- Welcome container section -->
+    <div class="welcome-container">
+        <h2>Velkommen til hjerteklinkken!</h2>
+
+        <div class="info-text">
+    <p>Venligst vælg din EKG-fil. De filer, du uploader, vil kun være tilgængelige for sundhedspersonalet, der er ansvarlige for din behandling. Vi behandler dine data med fuld fortrolighed.</p>
+</div>
+
+
+        <form method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            {{ form.file() }}
+            {{ form.submit() }}
+        </form>
+
+        {% if filename %}
+            <p>Din fil er uploaded som: {{ filename }}</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log ind for sundhedspersonale</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body class="forside">
+    <header>
+        <h2>Kontakt os</h2>
+        <p>Email: kontakt@hjerteklinik.dk</p>
+        <p>Telefon: 12345678</p>
+    </header>
+
+    <h1>Hjerteklinik</h1>
+
+    <div id="loginForm" class="container">
+        <div class="loginForm">
+            <h2>Log ind for sundhedspersonale</h2>
+            <form action="{{ url_for('login_personale') }}" method="POST"> <!-- This should match the route in Flask -->
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" name="username" id="username" required>
+                    <label>Brugernavn</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" name="password" id="password" required>
+                    <label>Adgangskode</label>
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
